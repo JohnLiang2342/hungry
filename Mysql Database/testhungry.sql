@@ -74,7 +74,7 @@ CREATE TABLE `food` (
 -- ----------------------------
 -- Records of food
 -- ----------------------------
-INSERT INTO `food` VALUES ('1', '肉片豆腐烩饭', '8.00', '好吃！！！', 'c1_f1', '1');
+INSERT INTO `food` VALUES ('1', '肉片豆腐烩饭', '8.00', '好吃！！！', 'c1_f1', '1'); 
 INSERT INTO `food` VALUES ('2', '肉片薯仔烩饭', '8.00', '好吃！！！', 'c1_f2', '1');
 INSERT INTO `food` VALUES ('3', '鸡蛋炒肉烩饭', '10.00', '好吃！！！', 'c1_f3', '1');
 INSERT INTO `food` VALUES ('4', '肉片茄子烩饭', '10.00', '好吃！！！', 'c1_f4', '1');
