@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="cn.hungry.mapper.FoodMapper">
+        <select id="list" resultType="Food">
+            select * from food where cid = #{cid}
+        </select>
+        <insert id="add" parameterType="cn.hungry.pojo.Food">
+	        insert into food ( name,description,price,cid ) values (#{name},#{description},#{price},#{cid})
+	    </insert>
+	    
+	    <delete id="delete" parameterType="cn.hungry.pojo.Food">
+	        delete from food where id= #{id}
+	    </delete>
+	    
+	    <select id="get" resultType="cn.hungry.pojo.Food">
+	        select * from food  where id= #{id}
+	    </select>
+	    
+	    <update id="update" parameterType="cn.hungry.pojo.Food" >
+	        update food set name=#{name},description=#{description},price=#{price} where id=#{id}
+	    </update>
+	    
+	    <update id="updateFoodImg" parameterType="cn.hungry.pojo.Food" >
+	        update food set img=#{img} where id=#{id}
+	    </update>
+	    
+	    <select id="search" resultType="Food">
+            select * from food where name like "%"#{0}"%"
+        </select>
+    </mapper>

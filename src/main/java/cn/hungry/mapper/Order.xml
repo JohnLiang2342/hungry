@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="cn.hungry.mapper.OrderMapper">       
+        <select id="listByUser" resultType="cn.hungry.pojo.Order">
+            select * from order_ where uid = #{uid} order by id desc
+        </select>
+        
+        <select id="list" resultType="cn.hungry.pojo.Order">
+            select * from order_ order by id desc
+        </select>
+        
+        <insert id="add" parameterType="cn.hungry.pojo.Order" useGeneratedKeys="true" keyProperty="id">
+			insert into order_ (order_code,address,receiver,phone,create_date,total_price,uid) values (#{order_code},#{address},#{receiver},#{phone},#{create_date},#{total_price},#{uid})
+	    </insert>
+	    
+	    <update id="setPay">
+	        update order_ set is_pay=1 where id=#{0}
+	    </update>
+	    
+	    <delete id="delete" parameterType="cn.hungry.pojo.Order">
+	        delete from order_ where id= #{id}
+	    </delete>
+	    
+	    <update id="delivery" parameterType="cn.hungry.pojo.Order">
+	        update order_ set delivery_date=#{delivery_date} where id=#{id}
+	    </update>
+	    
+	    <update id="setConfirm_date" parameterType="cn.hungry.pojo.Order">
+	        update order_ set confirm_date=#{confirm_date} where id=#{id}
+	    </update>
+	    
+	    
+	    <select id="get" resultType="cn.hungry.pojo.Order">
+	        select * from Order  where id= #{id}
+	    </select>
+	    
+	    <update id="update" parameterType="cn.hungry.pojo.Order" >
+	        update Order set name=#{name} where id=#{id}
+	    </update>
+	    
+	    <select id="getTotalPrice" resultType="java.lang.Float">
+	        select total_price from order_  where id= #{oid}
+	    </select>  
+	    
+	    
+	    
+        
+        
+    </mapper>

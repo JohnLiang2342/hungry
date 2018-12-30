@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="cn.hungry.mapper.OrderItemMapper">       
+        <select id="listCartByUser" resultType="cn.hungry.pojo.OrderItem">
+            select * from orderitem where uid = #{uid} and oid is null
+        </select>
+        
+        <select id="listOrderByUser" resultType="cn.hungry.pojo.OrderItem">
+            select * from orderitem where uid = #{0} and oid = #{1}
+        </select>
+        
+        <select id="checkFidExistCart" resultType="cn.hungry.pojo.OrderItem">
+	        select * from orderitem  where uid= #{0} and fid=#{1} and oid is null
+	    </select>
+	    
+	    <insert id="addCart" parameterType="cn.hungry.pojo.OrderItem">
+	        insert into orderitem ( uid,fid,number ) values (#{uid},#{fid},#{number})
+	    </insert>
+	    
+	    <update id="updateNumber" parameterType="cn.hungry.pojo.OrderItem" >
+	        update orderitem set number=#{number} where uid=#{uid} and fid=#{fid} and oid is null
+	    </update>
+        
+        <select id="getCartCountByUid" resultType="java.lang.Integer">
+            select count(uid) from orderitem where uid = #{uid} and oid is null
+        </select>
+        
+        <update id="creatOrder"> 
+	        update orderitem set oid=#{0} where uid=#{1} and oid is null
+	    </update>
+	    
+	    <delete id="deleteCartItem">
+	        delete from orderitem where uid=#{0} and id=#{1}
+	    </delete>
+	    
+	    
+        
+    </mapper>

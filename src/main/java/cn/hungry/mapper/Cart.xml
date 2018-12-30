@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="cn.hungry.mapper.CartMapper">       
+        <select id="getByFid" resultType="cn.hungry.pojo.Cart">
+            select * from cart where fid = #{fid}
+        </select>
+        
+        <insert id="addCart" parameterType="cn.hungry.pojo.Cart">
+	        insert into cart ( uid,fid,count ) values (2,#{fid},#{count})
+	    </insert>
+	    	  	    	    
+	    <update id="updateCount" parameterType="cn.hungry.pojo.Food" >
+	        update cart set count=#{count} where fid=#{fid}
+	    </update>
+	    
+	    <select id="getCartCountByUid" resultType="java.lang.Integer">
+            select count(uid) from cart where uid = #{uid}
+        </select>
+    </mapper>

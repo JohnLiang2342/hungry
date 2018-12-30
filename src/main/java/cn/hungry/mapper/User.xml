@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="cn.hungry.mapper.UserMapper">
+    	
+    	<select id="list" resultType="cn.hungry.pojo.User">
+            select * from user
+        </select>
+    
+        <select id="checkLogin" parameterType="cn.hungry.pojo.User" resultType="cn.hungry.pojo.User">
+            select * from user where username=#{username} and password=#{password}
+        </select>
+        
+        <insert id="toRegister" parameterType="cn.hungry.pojo.User" useGeneratedKeys="true" keyProperty="id">
+	        insert into user ( username,password,phone,create_date ) values (#{username},#{password},#{phone},#{create_date})
+	    </insert>
+	    
+	    <select id="get" resultType="cn.hungry.pojo.User"> 
+            select * from user where id=#{0}
+        </select>
+        
+        <select id="checkExisPhone" resultType="cn.hungry.pojo.User"> 
+            select * from user where phone=#{0}
+        </select>
+        
+        <update id="updateUsername" parameterType="cn.hungry.pojo.User">
+	        update user set username=#{username} where id=#{id}
+	    </update>
+	    
+	    <update id="updatePassword" parameterType="cn.hungry.pojo.User">
+	        update user set password=#{password} where id=#{id}
+	    </update>
+        
+    </mapper>
